@@ -1,0 +1,103 @@
+body{
+  background-color: black;
+}
+
+::selection {
+    color: white;
+    background: #b7b7c8;
+}
+
+#render-frame{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currentlyz*/
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -960px;
+  margin-top: -540px;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: 50% 50%;
+  /* Removed gradient background as it will be replaced by SMPTE bars */
+}
+
+#content-container{
+  height: 0px;
+  width: 1235px;
+  position: absolute;
+  top: 815px;
+  left: 150px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: top 300ms, height 300ms;
+  transition-timing-function: linear;
+}
+
+#content-container.shown{
+  height: 590px;
+  top: 225px;
+}
+
+#content-frame{
+  overflow: hidden;
+  top: 225px;
+  left: 150px;
+  position: absolute;
+  width: 1235px;
+  height: 590px;
+}
+
+#content-container.expand{
+  transition: left 0.5s, top 0.5s, width 0.5s, height 0.5s;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+#content-container.above-screen{
+  transition: top 400ms;
+  transition-timing-function: linear;
+  top: -100%;
+}
+
+/* Add styling for minimized ending state */
+.amazing-container.minimized,
+.updated-container.minimized {
+  transform: scale(0.5);
+  opacity: 0.7;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  transition: all 1s ease-in-out;
+}
+
+/* Additional styling for the background transition */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Background image overlay for smooth transitions */
+.background-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease-in-out;
+  z-index: 1; /* Above main background but below content */
+}
